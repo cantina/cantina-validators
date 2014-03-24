@@ -1,0 +1,32 @@
+{
+  "name": "cantina-validators",
+  "version": "3.0.0",
+  "description": "Provides validators for Cantina applications.",
+  "main": "cantina-validators.js",
+  "private": "true",
+  "dependencies": {
+    "moment": "~2.5.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "cantina": "cantina/cantina#3.x",
+    "idgen": "~1.3.0"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cantina/cantina-validators.git"
+  },
+  "homepage": "https://github.com/cantina/cantina-validators",
+  "keywords": [
+    "cantina",
+    "validators"
+  ],
+  "author": "Erin LeSavoy <erin@terraeclipse.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cantina/cantina-validators/issues"
+  }
+}
