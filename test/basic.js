@@ -32,6 +32,11 @@ describe('basic validator tests', function () {
     assert(!app.validators.isEmail('erin@terra'));
   });
 
+  it('isEmpty', function () {
+    assert(app.validators.isEmpty(''));
+    assert(!app.validators.isEmpty('test'));
+  });
+
   it('isEmailOrEmpty', function () {
     assert(app.validators.isEmailOrEmpty('erin@terraeclipse.com'));
     assert(app.validators.isEmailOrEmpty(''));
@@ -65,10 +70,18 @@ describe('basic validator tests', function () {
 
   it('isFutureDate', function () {
     var date = new Date();
-    date.setHours(date.getHours()+3);
+    date.setDate(date.getDate() + 2);
     assert(app.validators.isFutureDate(date));
     date.setDate(date.getDate() - 3);
     assert(!app.validators.isFutureDate(date));
+  });
+
+  it('isPastDate', function () {
+    var date = new Date();
+    date.setDate(date.getDate() - 3);
+    assert(app.validators.isPastDate(date));
+    date.setDate(date.getDate() + 5);
+    assert(!app.validators.isPastDate(date));
   });
 
   it('isType', function () {
@@ -78,6 +91,16 @@ describe('basic validator tests', function () {
     assert(app.validators.isType('object')(['1', '2', 3, '4']));
     assert(app.validators.isType('undefined')());
     assert(!app.validators.isType('string')(3));
+  });
+
+  it('isIn', function () {
+    assert(app.validators.isIn(['published', 'unpublished', 'deleted'])('published'));
+    assert(!app.validators.isIn(['A', 'B', 'C', 'D'])('E'));
+  });
+
+  it('isJSON', function () {
+    assert(app.validators.isJSON('{"foo": "bar"}'));
+    assert(!app.validators.isJSON('{foo: bar, bar}'));
   });
 
   it('matches', function () {

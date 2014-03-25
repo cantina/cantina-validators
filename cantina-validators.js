@@ -43,8 +43,12 @@ app.validators = {
     return email_regex.test(val);
   },
 
+  isEmpty: function (val) {
+    return (val === '')
+  },
+
   isEmailOrEmpty: function isEmailOrEmpty (val) {
-    return (val === '') || app.validators.isEmail(val);
+    return app.validators.isEmpty(val) || app.validators.isEmail(val);
   },
 
   isUrl: function isUrl (val) {
@@ -60,7 +64,7 @@ app.validators = {
   },
 
   isIdOrEmpty: function isIdOrEmpty (val) {
-    return (val === '') || app.validators.isId(val);
+    return app.validators.isEmpty(val) || app.validators.isId(val);
   },
 
   isFutureDate: function isFutureDate (val) {
@@ -69,10 +73,33 @@ app.validators = {
     return utc_val.isAfter(utc_now);
   },
 
+  isPastDate: function isPastDate (val) {
+    var utc_val = moment(val).endOf('day').utc();
+    var utc_now = moment().startOf('day').utc();
+    return utc_val.isBefore(utc_now);
+  },
+
   isType: function (type) {
     return function isType (val) {
       return typeof val === type;
     };
+  },
+
+  isIn: function (values) {
+    return function isIn (val) {
+      return values.indexOf(val) >= 0;
+    }
+  },
+
+  isJSON: function (str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      if (e instanceof SyntaxError) {
+        return false;
+      }
+    }
+    return true;
   },
 
   matches: function (regex) {
