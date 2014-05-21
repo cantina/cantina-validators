@@ -43,11 +43,11 @@ app.validators = {
     return email_regex.test(val);
   },
 
-  isEmpty: function (val) {
+  isEmpty: function isEmpty (val) {
     return (val === '');
   },
 
-  isNotEmpty: function (val) {
+  isNotEmpty: function isNotEmpty (val) {
     return (typeof val === 'string' && val.length);
   },
 
@@ -109,7 +109,7 @@ app.validators = {
     };
   },
 
-  isJSON: function (str) {
+  isJSON: function isJSON (str) {
     try {
       JSON.parse(str);
     } catch (e) {
