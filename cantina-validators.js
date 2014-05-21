@@ -47,6 +47,10 @@ app.validators = {
     return (val === '');
   },
 
+  isNotEmpty: function (val) {
+    return (typeof val === 'string' && val.length);
+  },
+
   isEmailOrEmpty: function isEmailOrEmpty (val) {
     return app.validators.isEmpty(val) || app.validators.isEmail(val);
   },

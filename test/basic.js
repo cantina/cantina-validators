@@ -37,6 +37,12 @@ describe('basic validator tests', function () {
     assert(!app.validators.isEmpty('test'));
   });
 
+  it('isNotEmpty', function () {
+    assert(app.validators.isNotEmpty('test'));
+    assert(!app.validators.isNotEmpty(''));
+    assert(!app.validators.isNotEmpty(null));
+  });
+
   it('isEmailOrEmpty', function () {
     assert(app.validators.isEmailOrEmpty('erin@terraeclipse.com'));
     assert(app.validators.isEmailOrEmpty(''));
