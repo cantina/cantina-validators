@@ -8,6 +8,7 @@ Validators for Cantina applications.
 - **app.validators.isFlag( val )**
 - **app.validators.isEmail( val )**
 - **app.validators.isEmpty( val )**
+- **app.validators.isNotEmpty( val )**
 - **app.validators.isEmailOrEmpty( val )**
 - **app.validators.isUrl( val )**
 - **app.validators.isPhoneNumber( val )**
