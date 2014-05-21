@@ -88,9 +88,18 @@ describe('basic validator tests', function () {
     assert(app.validators.isType('string')('test'));
     assert(app.validators.isType('number')(4));
     assert(app.validators.isType('boolean')(true));
-    assert(app.validators.isType('object')(['1', '2', 3, '4']));
+    assert(app.validators.isType('array')(['1', '2', 3, '4']));
+    assert(app.validators.isType('object')({a: 1, b: '2'}));
+    assert(app.validators.isType('date')(new Date()));
+    assert(app.validators.isType('regex')(/.*/));
+    assert(app.validators.isType('regexp')(/.*/));
     assert(app.validators.isType('undefined')());
+    assert(app.validators.isType('null')(null));
     assert(!app.validators.isType('string')(3));
+    assert(!app.validators.isType('object')(null));
+    assert(!app.validators.isType('object')(assert));
+    assert(!app.validators.isType('undefined')(null));
+    assert(!app.validators.isType('null')(''));
   });
 
   it('isIn', function () {

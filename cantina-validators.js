@@ -81,7 +81,21 @@ app.validators = {
 
   isType: function (type) {
     return function isType (val) {
-      return typeof val === type;
+      switch (type) {
+        case 'object':
+          return {}.toString.call(val) === '[object Object]';
+        case 'array':
+          return {}.toString.call(val) === '[object Array]';
+        case 'date':
+          return {}.toString.call(val) === '[object Date]';
+        case 'regexp':
+        case 'regex':
+          return {}.toString.call(val) === '[object RegExp]';
+        case 'null':
+          return {}.toString.call(val) === '[object Null]';
+        default:
+          return typeof val === type;
+      }
     };
   },
 
