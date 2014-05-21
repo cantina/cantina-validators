@@ -1,6 +1,6 @@
 {
   "name": "cantina-validators",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Provides validators for Cantina applications.",
   "main": "cantina-validators.js",
   "private": "true",
