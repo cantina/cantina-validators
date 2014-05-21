@@ -2,36 +2,36 @@ var app = require('cantina')
   , moment = require('moment');
 
 var email_regex = new RegExp(
-    '^'                                           +
+      '^'                                           +
       '[a-z0-9!#$%&\'*+/=?^_`{|}~-]+'               + // local name
       '(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*'       + // optional local name dot suffix
       '@'                                           +
       '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+'     + // second-level and lower domains with trailing .
       '(?:[a-z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)' + // top-level domain
       '$'                                           ,
-    'i')
+      'i')
   , url_regex = new RegExp(
-    '(ftp|http|https)://'                         + // protocol
+      '(ftp|http|https)://'                         + // protocol
       '(\\w+:{0,1}\\w*@)?'                          + // credentials (optional)
       '([^:/\\s]+)'                                 + // hostname
       '(:[0-9]+)?'                                  + // port (optional)
       '(/(?:[/?#%\\w-.~!$&\'()*+,;=:@]*))?'         , // path + query + hash (optional); "/" followed by zero or more valid characters
-    // valid characters are:
-    // '/' / '?' / '#' / '%'    - the reserved characters:
-    // '\w'                     - word characters [A-Za-z0-9_]
-    // '-' / '.' / '~'          - unreserved ('_' is included in '\w')
-    // '!' / '$' / '&' / ''' /  - sub-delimiters
-    // '(' / ')' / '*' / '+' /
-    // ',' / ';' / '='
-    // ':' / '@'                - other allowed characters
-    'i')
+      // valid characters are:
+      // '/' / '?' / '#' / '%'    - the reserved characters:
+      // '\w'                     - word characters [A-Za-z0-9_]
+      // '-' / '.' / '~'          - unreserved ('_' is included in '\w')
+      // '!' / '$' / '&' / ''' /  - sub-delimiters
+      // '(' / ')' / '*' / '+' /
+      // ',' / ';' / '='
+      // ':' / '@'                - other allowed characters
+      'i')
   , phone_number_regex = new RegExp(
-    '^'                                           +
-      '\\+?'                                         + // leading "+" (optional)
+      '^'                                           +
+      '\\+?'                                        + // leading "+" (optional)
       '[0-9()-. ]+'                                 + // digits or customary punctuation
       '(?:\\s*(?:#|x\\.?|ext\\.?|extension)\\s*(\\d+))?' + // extension (optional)
       '$'                                           ,
-    'i')
+      'i')
   , id_regex = /^[0-9a-zA-Z]{16}$/;
 
 app.validators = {
@@ -44,7 +44,7 @@ app.validators = {
   },
 
   isEmpty: function (val) {
-    return (val === '')
+    return (val === '');
   },
 
   isEmailOrEmpty: function isEmailOrEmpty (val) {
@@ -88,7 +88,7 @@ app.validators = {
   isIn: function (values) {
     return function isIn (val) {
       return values.indexOf(val) >= 0;
-    }
+    };
   },
 
   isJSON: function (str) {
