@@ -6,7 +6,6 @@
     "registry": "https://npm-registry.terraeclipse.com"
   },
   "main": "cantina-validators.js",
-  "private": "true",
   "dependencies": {
     "moment": "~2.5.1"
   },
