@@ -1,5 +1,4 @@
-var app = require('cantina')
-  , moment = require('moment');
+var moment = require('moment');
 
 var email_regex = new RegExp(
       '^'                                           +
@@ -34,7 +33,7 @@ var email_regex = new RegExp(
       'i')
   , id_regex = /^[0-9a-zA-Z]{16}$/;
 
-app.validators = {
+var validators = {
   isFlag: function isFlag (val) {
     return val === 0 || val === 1;
   },
@@ -52,7 +51,7 @@ app.validators = {
   },
 
   isEmailOrEmpty: function isEmailOrEmpty (val) {
-    return app.validators.isEmpty(val) || app.validators.isEmail(val);
+    return validators.isEmpty(val) || validators.isEmail(val);
   },
 
   isUrl: function isUrl (val) {
@@ -68,7 +67,7 @@ app.validators = {
   },
 
   isIdOrEmpty: function isIdOrEmpty (val) {
-    return app.validators.isEmpty(val) || app.validators.isId(val);
+    return validators.isEmpty(val) || validators.isId(val);
   },
 
   isFutureDate: function isFutureDate (val) {
@@ -158,3 +157,10 @@ app.validators = {
     };
   }
 };
+
+module.exports = function (app) {
+  app.validators = validators;
+};
+Object.keys(validators).forEach(function (key) {
+  module.exports[key] = validators[key];
+});

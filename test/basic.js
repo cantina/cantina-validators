@@ -5,12 +5,12 @@ describe('basic validator tests', function () {
   var app;
 
   before(function (done) {
-    app = require('cantina');
+    app = require('cantina').createApp();
     app.boot(function (err) {
       assert.ifError(err);
 
       app.silence();
-      require('../');
+      app.require('../');
 
       app.start(done);
     });
