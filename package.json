@@ -2,9 +2,6 @@
   "name": "cantina-validators",
   "description": "Provides validators for Cantina applications.",
   "version": "4.1.0",
-  "publishConfig": {
-    "registry": "https://npm-registry.terraeclipse.com"
-  },
   "main": "cantina-validators.js",
   "dependencies": {
     "moment": "~2.5.1"
@@ -24,6 +21,12 @@
     "type": "git",
     "url": "git://github.com/cantina/cantina-validators.git"
   },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
   "homepage": "https://github.com/cantina/cantina-validators",
   "keywords": [
     "cantina",
