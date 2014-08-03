@@ -1,7 +1,7 @@
 {
   "name": "cantina-validators",
   "description": "Provides validators for Cantina applications.",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "main": "cantina-validators.js",
   "dependencies": {
     "moment": "~2.5.1"
